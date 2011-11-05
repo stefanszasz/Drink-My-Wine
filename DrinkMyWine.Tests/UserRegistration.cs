@@ -44,7 +44,7 @@ namespace DrinkMyWine.Tests
             Assert.IsInstanceOf(typeof(InvalidUser), registeringUser);
         }
 
-        static object[] DivideCases =
+        static object[] EmailDataCase =
         {
             new string[] { "One@a", "Two" },
             new string[] { "@Three", "Four" },
