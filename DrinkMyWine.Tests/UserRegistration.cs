@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections;
-using System.Linq;
-using System.Text;
 using Moq;
 using NUnit.Framework;
 
@@ -13,7 +10,7 @@ namespace DrinkMyWine.Tests
         [Test]
         public void Repository_AddNewValidUser_Succeeds()
         {
-            User registeringUser = User.Create("sese@gmail.com", "sese");
+            User registeringUser = User.Create("s@qqmail.com", "abaaa");
 
             var mockRepo = new Mock<IUserRepository>();
             mockRepo.Setup(rep => rep.AddUser(registeringUser)).Returns(true);
@@ -26,7 +23,7 @@ namespace DrinkMyWine.Tests
         [Test]
         public void Repository_AddExistingNewValidUser_Fails()
         {
-            User registeringUser = User.Create("sese@gmail.com", "sese");
+            User registeringUser = User.Create("s@qqmail.com", "abaaa");
 
             var mockRepo = new Mock<IUserRepository>();
             mockRepo.Setup(rep => rep.AddUser(registeringUser)).Returns(true);
@@ -37,24 +34,22 @@ namespace DrinkMyWine.Tests
             Assert.IsFalse(succees);
         }
 
-        [Test, TestCaseSource("DivideCases")]
+        [Test]
+        [TestCase("a@a", "aaa")]
+        [TestCase("a@a.", "aaa")]
+        [TestCase(".@", "pass")]
         public void EmailValidator_InvalidEmail_GetsInvalidUser(string email, string pass)
         {
             User registeringUser = User.Create(email, pass);
             Assert.IsInstanceOf(typeof(InvalidUser), registeringUser);
         }
 
-        static object[] EmailDataCase =
-        {
-            new string[] { "One@a", "Two" },
-            new string[] { "@Three", "Four" },
-            new string[] { "Five.@", "Six" } 
-        };
-
         [Test]
-        public void UserCreate_EmptyEmail_Throws()
+        [TestCase("", "")]
+        [TestCase(null, null)]
+        public void UserCreate_EmptyEmail_Throws(string email, string pass)
         {
-            Assert.That(() => User.Create(null, null),
+            Assert.That(() => User.Create(email, pass),
                         Throws.Exception.TypeOf<ArgumentNullException>().With.Property("ParamName").EqualTo("email"));
         }
     }
