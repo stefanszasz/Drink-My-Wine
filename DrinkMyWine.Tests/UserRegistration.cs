@@ -54,7 +54,6 @@ namespace DrinkMyWine.Tests
         [Test]
         public void UserCreate_EmptyEmail_Throws()
         {
-            //this should throw
             Assert.That(() => User.Create(null, null),
                         Throws.Exception.TypeOf<ArgumentNullException>().With.Property("ParamName").EqualTo("email"));
         }
