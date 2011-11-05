@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Linq;
 using System.Text;
 using Moq;
@@ -49,5 +50,12 @@ namespace DrinkMyWine.Tests
             new string[] { "@Three", "Four" },
             new string[] { "Five.@", "Six" } 
         };
+
+        [Test]
+        public void UserCreate_EmptyEmail_Throws()
+        {
+            Assert.That(() => User.Create(null, null),
+                        Throws.Exception.TypeOf<ArgumentNullException>().With.Property("ParamName").EqualTo("email"));
+        }
     }
 }
