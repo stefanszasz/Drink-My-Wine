@@ -47,10 +47,11 @@ namespace DrinkMyWine.Tests
         [Test]
         [TestCase("", "")]
         [TestCase(null, null)]
+        [TestCase("some@aaam.com", "")]
+        [TestCase(null, "test")]
         public void UserCreate_EmptyEmail_Throws(string email, string pass)
         {
-            Assert.That(() => User.Create(email, pass),
-                        Throws.Exception.TypeOf<ArgumentNullException>().With.Property("ParamName").EqualTo("email"));
+            Assert.That(() => User.Create(email, pass), Throws.Exception.TypeOf<ArgumentNullException>());
         }
     }
 }

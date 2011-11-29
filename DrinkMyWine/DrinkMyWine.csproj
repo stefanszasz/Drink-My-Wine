@@ -74,17 +74,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Cart.cs" />
     <Compile Include="ComposedValidator.cs" />
     <Compile Include="EmailValidator.cs" />
     <Compile Include="IUserRegistrationService.cs" />
     <Compile Include="IUserRepository.cs" />
     <Compile Include="IValidator.cs" />
+    <Compile Include="OrderLine.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="User.cs" />
+    <Compile Include="Wine.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

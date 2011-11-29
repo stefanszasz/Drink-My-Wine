@@ -4,8 +4,6 @@ namespace DrinkMyWine
 {
     public class User
     {
-        internal User() { }
-
         public static User Create(string email, string password)
         {
             if (string.IsNullOrWhiteSpace(email))
